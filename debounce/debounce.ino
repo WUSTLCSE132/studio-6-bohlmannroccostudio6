@@ -7,20 +7,22 @@ void buttonPressed(){
     long currentTime = millis();
     if((currentTime - lastTime) > debounceDelay){
       buttonPresses++;
+        Serial.print("press");
       lastTime = currentTime;
-    }
+   }
+ 
 }
+
 
 void setup(){
   Serial.begin(9600);
   pinMode(buttonPin, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(buttonPin), buttonPressed, FALLING);
-  
 }
 
 void loop(){
   for(int i = 0; i < 200; i++){
-    Serial.println(buttonPresses);
+    Serial.print(0);
     delay(1000);
   }
 }
